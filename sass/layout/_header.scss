@@ -1,0 +1,154 @@
+.header {
+  grid-row: 1 / span 1;
+  grid-column: 2 / span 10;
+  align-content: center;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(auto, 6vw);
+
+  margin: 7rem 0;
+
+  &__nav--opener {
+    grid-column: 1 / span 1;
+    align-self: center;
+    justify-self: start;
+    cursor: pointer;
+
+    @include respond(tab-land) {
+      grid-row: 2 / span 1;
+    }
+
+    .hamburger {
+      display: inline-block;
+      width: 2.4rem;
+      height: 0.4rem;
+      background-color: $color-white;
+      position: relative;
+
+      transition: all 0.2s ease;
+
+      &::before {
+        content: "";
+        background-color: $color-white;
+        width: 2.4rem;
+        height: 0.4rem;
+        position: absolute;
+        top: 0.8rem;
+        left: 0;
+      }
+
+      &::after {
+        content: "";
+        background-color: $color-white;
+        width: 2.4rem;
+        height: 0.4rem;
+        position: absolute;
+        top: -0.8rem;
+        left: 0;
+      }
+
+      @include on-event() {
+        &,
+        &::before,
+        &::after {
+          transform: scale(1.05);
+          box-shadow: 0 4px 8px $color-white;
+        }
+      }
+    }
+  }
+
+  &__logo-box {
+    grid-column: 2 / span 1;
+    align-self: center;
+    justify-self: center;
+
+    display: flex;
+    width: 14rem;
+
+    filter: drop-shadow(0 2px 4px $color-yellow);
+
+    .not-visual {
+      overflow: hidden;
+      width: 0;
+      height: 0;
+    }
+  }
+
+  &__search {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1;
+    align-self: center;
+    justify-self: end;
+
+    transition-delay: 0.4s;
+    transition-property: background-color;
+
+    @include respond(tab-land) {
+      grid-row: 2 / span 1;
+    }
+
+    display: flex;
+    gap: 1rem;
+    min-height: 4rem;
+    color: $color-white;
+    border-radius: 999rem;
+    padding: 0.5rem 1.5rem;
+    position: relative;
+
+    // transition: all 0.4s ease-out;
+
+    &--input {
+      max-width: 0;
+      overflow: hidden;
+      padding: 0;
+      border: none;
+
+      transition: all 0.4s ease;
+
+      @include on-event() {
+        outline: none;
+      }
+    }
+
+    &--image {
+      cursor: pointer;
+      width: 3rem;
+
+      transition: all 0.1s ease;
+      transition-delay: 0.4s;
+      transition-property: color;
+    }
+
+    &.opened {
+      background-color: $color-white;
+
+      .header__search {
+        &--input {
+          max-width: 100vw;
+          width: 30rem;
+          font-size: 1.6rem;
+          color: $color-grey-dark-1;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          border-radius: 999px;
+          padding: 0.5rem 1.5rem;
+        }
+
+        &--image {
+          color: $color-grey-dark-1;
+          z-index: 10;
+          transition-delay: 0s;
+        }
+      }
+    }
+
+    &:not(.opened) &--image:hover {
+      transform: translateY(-2px);
+      filter: drop-shadow(0 4px 8px $color-white);
+    }
+  }
+}

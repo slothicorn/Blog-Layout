@@ -1,0 +1,27 @@
+body {
+  min-height: 100vh;
+  width: 100vw;
+
+  display: grid;
+  grid-template-columns: minmax(20rem, 1fr) repeat(10, minmax(5.5vw, 12rem)) minmax(
+      20rem,
+      1fr
+    );
+  grid-template-rows: minmax(auto, 12vw) 1fr minmax(auto, 6vw);
+
+  @include respond(wide-screen) {
+    grid-template-columns: minmax(13rem, 1fr) repeat(10, minmax(5.5vw, 12rem)) minmax(
+        13rem,
+        1fr
+      );
+  }
+
+  @include respond(tab-port) {
+    grid-template-columns: minmax(9rem, 1fr) repeat(10, minmax(5.5vw, 12rem)) minmax(
+        9rem,
+        1fr
+      );
+  }
+
+  background-color: $color-grey-dark-1;
+}

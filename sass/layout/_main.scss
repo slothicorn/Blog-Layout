@@ -1,0 +1,213 @@
+.main {
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 10;
+
+  &__articles {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 24rem;
+    gap: 1.5rem;
+    margin-bottom: 5vh;
+
+    &--article {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+
+      &:not(.cta)::after {
+        content: "";
+        position: absolute;
+        background: linear-gradient(transparent 55%, $color-black);
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+
+      &.travel::before {
+        content: "music";
+        position: absolute;
+        top: 6%;
+        left: 6%;
+        background: $color-green;
+        width: 7rem;
+        height: 2.5rem;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+      }
+
+      &.tech::before {
+        content: "theater";
+        position: absolute;
+        top: 6%;
+        left: 6%;
+        background: $color-orange;
+        width: 7rem;
+        height: 2.5rem;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+      }
+
+      .article-image,
+      .article-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.4s ease;
+      }
+
+      .article-data {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        font-size: 1.8rem;
+        text-shadow: 0 0 5px $color-black;
+        padding: 3.5rem;
+        color: $color-white;
+        z-index: 10;
+
+        @include respond(tab-port) {
+          font-size: 3rem;
+        }
+
+        @include respond(phone) {
+          font-size: 4rem;
+        }
+
+        p {
+          margin-bottom: 1em;
+        }
+
+        .date {
+          color: $color-grey-light-3;
+          font-size: 1rem;
+          text-shadow: 0 0 5px $color-black;
+
+          @include respond(tab-port) {
+            font-size: 1.5rem;
+          }
+        }
+      }
+
+      &:hover {
+        // transform: translateY(-1px);
+
+        .article-image,
+        .article-video {
+          transform: scale(1.05);
+          filter: brightness(0.7);
+        }
+      }
+    }
+
+    .article-1 {
+      grid-column: 1 / span 8;
+      grid-row: 1 / span 2;
+
+      @include respond(tab-land) {
+        grid-column: 1 / span 7;
+      }
+
+      @include respond(tab-port) {
+        grid-column: 1 / span 12;
+      }
+    }
+
+    .article-2 {
+      grid-column: 1 / span 4;
+      grid-row: 3 / span 1;
+
+      p {
+        font-size: 1.5rem;
+      }
+
+      @include respond(tab-port) {
+        grid-column: 1 / span 6;
+      }
+
+      @include respond(phone) {
+        grid-column: 1 / span 12;
+        grid-row: 5 / span 2;
+      }
+    }
+
+    .article-3 {
+      grid-column: 1 / span 4;
+      grid-row: 4 / span 1;
+
+      p {
+        font-size: 1.5rem;
+      }
+
+      @include respond(tab-port) {
+        grid-column: 1 / span 6;
+      }
+
+      @include respond(phone) {
+        grid-column: 1 / span 12;
+        grid-row: 3 / span 2;
+      }
+    }
+
+    .article-4 {
+      grid-column: 5 / span 8;
+      grid-row: 3 / span 2;
+
+      @include respond(tab-port) {
+        grid-column: 1 / span 12;
+        grid-row: auto / span 2;
+      }
+    }
+
+    .cta {
+      grid-column: 9 / span 4;
+      grid-row: 1 / span 2;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom, $color-yellow, $color-orange);
+
+      @include respond(tab-land) {
+        grid-column: 8 / span 5;
+      }
+
+      @include respond(tab-port) {
+        grid-row: 3 / span 2;
+        grid-column: 7 / span 6;
+      }
+
+      @include respond(phone) {
+        grid-column: 1 / span 12;
+        grid-row: 7 / span 4;
+      }
+
+      &--image {
+        width: 100%;
+        height: 40%;
+        object-fit: contain;
+        color: $color-orange;
+      }
+
+      &--text {
+        color: $color-white;
+        font-size: 1.8rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-align: center;
+        margin-top: 3rem;
+      }
+    }
+  }
+}

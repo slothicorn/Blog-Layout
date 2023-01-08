@@ -1,0 +1,74 @@
+.footer {
+  grid-row: 3 / span 1;
+  grid-column: 1 / span 12;
+
+  display: grid;
+  grid-template-columns: minmax(20rem, 1fr) minmax(55vw, 120rem) minmax(
+      20rem,
+      1fr
+    );
+
+  @include respond(wide-screen) {
+    grid-template-columns: minmax(13rem, 1fr) (minmax(55vw, 120rem)) minmax(
+        13rem,
+        1fr
+      );
+  }
+
+  @include respond(tab-port) {
+    grid-template-columns: minmax(9rem, 1fr) (minmax(55vw, 120rem)) minmax(
+        9rem,
+        1fr
+      );
+  }
+
+  background-color: $color-grey-dark-2;
+  min-height: 8vh;
+
+  &__container {
+    grid-column: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--text {
+      color: $color-footer-text;
+      font-size: 1.3rem;
+    }
+
+    &--socials {
+      grid-row: 2 / span 1;
+      grid-column: 1 / span 1;
+
+      display: flex;
+      align-items: center;
+      height: max-content;
+
+      display: none;
+
+      @include respond(tab-port) {
+        display: flex;
+      }
+
+      .social {
+        width: 2rem;
+        height: 2rem;
+        margin: 1rem;
+        color: $color-grey-light-3;
+
+        @include on-event() {
+          cursor: pointer;
+          transform: translateY(-2px);
+          filter: drop-shadow(0 4px 8px $color-white);
+        }
+      }
+    }
+
+    &--logo {
+      width: 10rem;
+      color: $color-white;
+
+      filter: drop-shadow(0 2px 4px $color-yellow);
+    }
+  }
+}
